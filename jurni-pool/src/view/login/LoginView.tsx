@@ -17,7 +17,13 @@ function LoginView() {
         </div>
         <div className='bg-[#1a254e] md:h-screen md:w-1/6 w-screen h-10 absolute mix-blend-overlay opacity-45'></div>
         <div className='bg-[#21326c] md:h-screen md:w-3/6 w-screen h-40 absolute mix-blend-overlay opacity-35'></div>
-        <div className='bg-[#4D6DE3] md:h-screen md:w-2/5 w-screen h-96'></div>
+        <div className='bg-[#4D6DE3] md:h-screen md:w-2/5 w-screen h-96'>
+          <div className='flex items-center justify-center h-full'>
+             <div className='bg-red-500 w-4/5 h-4/5'>
+              
+             </div>
+          </div>
+        </div>
       </div>
 
       <div className='bg-green-500 h-screen w-full'></div>
