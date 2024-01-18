@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import vedio from '../../assets/vedio_login.mp4';
 import { Typography } from "@material-tailwind/react";
 import logo from '../../assets/bigmain_logo.png';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 function LoginView() {
   return (
@@ -19,7 +22,7 @@ function LoginView() {
           ease: "linear",
           delay: 0.1,
         }}
-        className='bg-black md:h-screen md:w-3/5 w-screen h-48'>
+        className='bg-black md:h-screen md:min-h-[30rem] md:w-3/5 w-screen h-48'>
         <video
         src={vedio}
         controls={false}
@@ -40,10 +43,10 @@ function LoginView() {
           ease: "linear",
           delay: 0.5,
         }}
-         className="md:h-screen md:w-3/5 w-screen h-48 absolute top-0 left-0 bg-[#4D6DE3] mix-blend-overlay opacity-100"></motion.div>
+         className="md:h-screen md:w-3/5 w-screen h-48 md:min-h-[30rem] absolute top-0 left-0 bg-[#4D6DE3] mix-blend-overlay opacity-100"></motion.div>
         </motion.div>
-        <div className='bg-[#e8e8e8] md:h-screen md:w-1/5 w-screen h-14 absolute mix-blend-overlay opacity-40'></div>
-        <div className='bg-black md:h-screen md:w-3/5 w-screen h-48 absolute mix-blend-overlay opacity-10'></div>
+        <div className='bg-[#e8e8e8] md:h-screen md:min-h-[30rem] md:w-1/5 w-screen h-14 absolute mix-blend-overlay opacity-40'></div>
+        <div className='bg-black md:h-screen md:min-h-[30rem] md:w-3/5 w-screen h-48 absolute mix-blend-overlay opacity-10'></div>
         <motion.div
         initial={{
           y: -1000
@@ -56,7 +59,7 @@ function LoginView() {
           ease: "linear",
           delay: 0.1,
         }}
-           className='bg-[#4D6DE3] md:h-screen md:w-2/5 w-screen h-96'>
+           className='bg-[#4D6DE3] md:h-screen md:min-h-[30rem] md:w-2/5 w-screen h-[31rem]'>
           <div className='flex items-center justify-center h-full'>
              <div className='w-4/5 h-4/5 flex flex-col items-center justify-center border border-white rounded'>
              <h1 className='-mt-5 text-white font-bold text-2xl '>පිවිසුම</h1>
@@ -66,6 +69,28 @@ function LoginView() {
                <h3 className='mt-5 text-white'>ඔබේ ගිනුමට ඇතුළු වීමට </h3>
                <h3 className='text-white'>පහලින් තිබෙන</h3>
                <h3 className='text-white'>ගූගල් බොත්තම ඔබන්න.</h3>
+               <div className='mt-3'></div>
+               <GoogleOAuthProvider  clientId="439833973834-e1inhrr6q80nvv8kmtr0i3m9lpbh54nn.apps.googleusercontent.com">
+      <GoogleLogin
+        size='large'
+        onSuccess={(credentialResponse) => {
+          if (credentialResponse?.credential) {
+            console.log(credentialResponse.credential);
+
+            const cd = credentialResponse.credential;
+            console.log(jwtDecode(cd));
+
+          } else {
+            console.log('Credential not available');
+          }
+        }}
+        onError={() => {
+          console.log('Login Failed');
+        }}
+        useOneTap
+      />
+    </GoogleOAuthProvider>
+
              </div>
           </div>
         </motion.div>
