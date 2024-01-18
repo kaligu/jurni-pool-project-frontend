@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import vedio from '../../assets/vedio_login.mp4';
 import { Typography } from "@material-tailwind/react";
+import logo from '../../assets/bigmain_logo.png';
 
 function LoginView() {
   return (
@@ -57,8 +58,14 @@ function LoginView() {
         }}
            className='bg-[#4D6DE3] md:h-screen md:w-2/5 w-screen h-96'>
           <div className='flex items-center justify-center h-full'>
-             <div className='bg-gray-500 w-4/5 h-4/5'>
-
+             <div className='w-4/5 h-4/5 flex flex-col items-center justify-center border border-white rounded'>
+             <h1 className='-mt-5 text-white font-bold text-2xl '>පිවිසුම</h1>
+             <hr className='mt-2 h-1 w-2/5'></hr>
+               <img alt='logo' src={logo} className='mt-8 w-3/5 h3/5'></img>
+               
+               <h3 className='mt-5 text-white'>ඔබේ ගිනුමට ඇතුළු වීමට </h3>
+               <h3 className='text-white'>පහලින් තිබෙන</h3>
+               <h3 className='text-white'>ගූගල් බොත්තම ඔබන්න.</h3>
              </div>
           </div>
         </motion.div>
@@ -76,6 +83,7 @@ function LoginView() {
             <Typography
               as="a"
               href="#"
+              placeholder=''
               color="blue-gray"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
@@ -87,6 +95,7 @@ function LoginView() {
               as="a"
               href="#"
               color="blue-gray"
+              placeholder=''
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               License
@@ -97,6 +106,7 @@ function LoginView() {
               as="a"
               href="#"
               color="blue-gray"
+              placeholder=''
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               Contribute
@@ -107,6 +117,7 @@ function LoginView() {
               as="a"
               href="#"
               color="blue-gray"
+              placeholder=''
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               Contact Us
@@ -115,7 +126,7 @@ function LoginView() {
         </ul>
       </div>
       <hr className="my-8 border-blue-gray-50" />
-      <Typography color="blue-gray" className="text-center font-normal">
+      <Typography placeholder='' color="blue-gray" className="text-center font-normal">
         &copy; 2023 Material Tailwind
       </Typography>
     </footer>
