@@ -6,11 +6,13 @@
 import './App.css'
 import LoginView from './view/login/LoginView'
 
+
 function App() {
 
   return (
     <>
       <LoginView/>
+      {/* <FullLoadScreen/> */}
     </>
   )
 }
