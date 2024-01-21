@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
+require("dotenv").config();
 
 function LoginView() {
   return (
@@ -71,7 +72,7 @@ function LoginView() {
                <h3 className='text-white'>පහලින් තිබෙන</h3>
                <h3 className='text-white'>ගූගල් බොත්තම ඔබන්න.</h3>
                <div className='mt-3'></div>
-               <GoogleOAuthProvider  clientId="439833973834-e1inhrr6q80nvv8kmtr0i3m9lpbh54nn.apps.googleusercontent.com">
+               <GoogleOAuthProvider  clientId={(process.env.GOOGLE_AUTH_CLIENT_ID) as string}>
       <GoogleLogin
         size='large'
         onSuccess={(credentialResponse) => {
@@ -81,7 +82,7 @@ function LoginView() {
             const cd = credentialResponse.credential;
             console.log(jwtDecode(cd));
 
-            axios.post('http://localhost:9595/api/user/login', {
+            axios.post(((process.env.URL_SERVERAPI_USER_LOGIN) as string), {
               userData: credentialResponse
             })
             .then(function (response) {
