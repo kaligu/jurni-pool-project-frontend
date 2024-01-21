@@ -5,6 +5,7 @@ import logo from '../../assets/bigmain_logo.png';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
 
 function LoginView() {
   return (
@@ -79,6 +80,16 @@ function LoginView() {
 
             const cd = credentialResponse.credential;
             console.log(jwtDecode(cd));
+
+            axios.post('http://localhost:9595/api/user/login', {
+              userData: credentialResponse
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
 
           } else {
             console.log('Credential not available');
