@@ -6,10 +6,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
-
-const GOOGLE_AUTH_CLIENT_ID = '439833973834-e1inhrr6q80nvv8kmtr0i3m9lpbh54nn.apps.googleusercontent.com';
-const URL_SERVERAPI_USER_LOGIN = 'http://localhost:9595/api/user/login';
-
+import {GOOGLE_AUTH_CLIENT_ID, URL_SERVERAPI_USER_LOGIN} from '../../util/config';
 
 function LoginView() {
   return (
