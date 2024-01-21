@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import image from '../assets/loadgif.gif';
-
-import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function FullLoadScreen() {
   useEffect(() => {
@@ -26,17 +25,46 @@ function FullLoadScreen() {
 
   return (
     <>
-    <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50 bg-black bg-opacity-70 backdrop-filter backdrop-blur-sm">
-      <div className='flex flex-col items-center'>
+<div className="absolute top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-filter backdrop-blur-sm">
+  <div className="text-center relative"> {/* Added relative class */}
+    <img
+      className="h-40 w-15 rounded-full top-0 left-10"
+      src={image}
+      alt="loading gif"
+    />
+    <CircularProgress
+      size={200}
+      thickness={1}
+      sx={{
+        color: '#4D6DE3',
+        position: 'absolute',
+        top: '-12%',  // Center vertically
+        left: '-13%',
+        zIndex: 1,
+      }}
+    />
+  </div>
+
+
+      {/* <div className='flex flex-col items-center'>
         <div>
           <img
             className="h-44 w-15 rounded-full "
             src={image}
             alt="loading gif"
           />
-          <LinearProgress className='w-full mt-10' />
+          <CircularProgress
+            size={100}
+            sx={{
+              color: green[500],
+              position: 'absolute',
+              top: -6,
+              left: -6,
+              zIndex: 1,
+            }}
+          />
         </div>
-      </div>
+      </div> */}
     </div>
     </>
   );
