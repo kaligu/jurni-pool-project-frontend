@@ -8,10 +8,12 @@ import axios from 'axios';
 import {GOOGLE_AUTH_CLIENT_ID, URL_SERVERAPI_USER_LOGIN, LOADTIMECALL_SERVERAPI_USER_LOGIN} from '../../util/config';
 import { useState } from 'react';
 import FullLoadScreen from '../../components/FullLoadScreen';
+import { Routes, Route, useNavigate, BrowserRouter} from 'react-router-dom';
+
 
 function LoginView() {
   const [loading, setLoading] = useState(false);
-  
+  const navigate = useNavigate();  // Access the history object for navigation
 
   const handleGoogleLogin = (credentialResponse:any) => {
     setLoading(true);
@@ -24,16 +26,22 @@ function LoginView() {
       .then(function (response) {
         console.log(response);
         // Handle the response as needed
+
+        //set routing link
+        navigate('/app'); // Use the history object for navigation>
+
       })
       .catch(function (error) {
         console.log(error);
-        // Handle the error as needed
+      
       })
       .finally(() => {
         setLoading(false); // Set loading to false on login error
+
       });
     } else {
       console.log('Credential not available');
+
     }
   };
 
@@ -41,6 +49,7 @@ function LoginView() {
     <>
       {/* loading component */}
       {loading && <FullLoadScreen loadingTime={LOADTIMECALL_SERVERAPI_USER_LOGIN}/>}
+
 
       <div className='flex md:flex-row flex-col'>
         <motion.div
@@ -76,7 +85,7 @@ function LoginView() {
           ease: "linear",
           delay: 0.5,
         }}
-         className="md:h-screen md:w-3/5 w-screen h-48 md:min-h-[30rem] absolute top-0 left-0 bg-[#4D6DE3] mix-blend-overlay opacity-100"></motion.div>
+         className="md:h-screen md:w-3/5 w-screen h-48 md:min-h-[30rem] absolute top-0 left-0 bg-[#4D6DE3] mix-blend-overlay opacity-80"></motion.div>
         </motion.div>
         <div className='bg-[#e8e8e8] md:h-screen md:min-h-[30rem] md:w-1/5 w-screen h-14 absolute mix-blend-overlay opacity-40'></div>
         <div className='bg-black md:h-screen md:min-h-[30rem] md:w-3/5 w-screen h-48 absolute mix-blend-overlay opacity-10'></div>
@@ -121,6 +130,8 @@ function LoginView() {
       </div>
 
       {/* Other Content */}
+
+
       <div className='bg-white h-screen w-full'></div>
 
       {/* footer */}
