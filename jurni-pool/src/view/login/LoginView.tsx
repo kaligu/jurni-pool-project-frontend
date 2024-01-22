@@ -4,13 +4,44 @@ import { Typography } from "@material-tailwind/react";
 import logo from '../../assets/bigmain_logo.png';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
-import {GOOGLE_AUTH_CLIENT_ID, URL_SERVERAPI_USER_LOGIN} from '../../util/config';
+import {GOOGLE_AUTH_CLIENT_ID, URL_SERVERAPI_USER_LOGIN, LOADTIMECALL_SERVERAPI_USER_LOGIN} from '../../util/config';
+import { useState } from 'react';
+import FullLoadScreen from '../../components/FullLoadScreen';
 
 function LoginView() {
+  const [loading, setLoading] = useState(false);
+  
+
+  const handleGoogleLogin = (credentialResponse:any) => {
+    setLoading(true);
+
+    if (credentialResponse?.credential) {
+
+      axios.post(URL_SERVERAPI_USER_LOGIN, {
+        userData: credentialResponse,
+      })
+      .then(function (response) {
+        console.log(response);
+        // Handle the response as needed
+      })
+      .catch(function (error) {
+        console.log(error);
+        // Handle the error as needed
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false on login error
+      });
+    } else {
+      console.log('Credential not available');
+    }
+  };
+
   return (
     <>
+      {/* loading component */}
+      {loading && <FullLoadScreen loadingTime={LOADTIMECALL_SERVERAPI_USER_LOGIN}/>}
+
       <div className='flex md:flex-row flex-col'>
         <motion.div
         initial={{
@@ -75,30 +106,11 @@ function LoginView() {
                <GoogleOAuthProvider  clientId={GOOGLE_AUTH_CLIENT_ID}>
       <GoogleLogin
         size='large'
-        onSuccess={(credentialResponse) => {
-          if (credentialResponse?.credential) {
-            console.log(credentialResponse.credential);
-
-            const cd = credentialResponse.credential;
-            console.log(jwtDecode(cd));
-
-            axios.post((URL_SERVERAPI_USER_LOGIN), {
-              userData: credentialResponse
-            })
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-
-          } else {
-            console.log('Credential not available');
-          }
-        }}
-        onError={() => {
-          console.log('Login Failed');
-        }}
+          onSuccess={handleGoogleLogin}
+          onError={() => {
+            console.log('Login Failed');
+            setLoading(false); // Set loading to false on login error
+          }}
         useOneTap
       />
     </GoogleOAuthProvider>
