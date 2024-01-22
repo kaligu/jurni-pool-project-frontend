@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <LoginView/>
-      <FullLoadScreen/>
+      <FullLoadScreen loadingTime={1}/>
     </>
   )
 }

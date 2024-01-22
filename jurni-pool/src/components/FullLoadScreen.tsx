@@ -1,23 +1,51 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import image from '../assets/loadgif.gif';
 import CircularProgress from '@mui/material/CircularProgress';
 
-function FullLoadScreen() {
+interface propsTypes {
+  loadingTime: number; // Loading time in seconds
+}
+
+function FullLoadScreen(props: propsTypes) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // Calculate the duration in milliseconds based on the loading time provided in props
+    const duration = props.loadingTime * 1000;
+    const interval = 100; // Set the update interval in milliseconds
+
+    // Calculate the number of steps needed for the given duration and interval
+    const steps = duration / interval;
+    let currentStep = 0;
+
+    // Start a timer to update the progress at regular intervals
+    const timer = setInterval(() => {
+      // Update the progress, ensuring it doesn't exceed 100%
+      setProgress(() => (currentStep >= steps ? 100 : (currentStep / steps) * 100));
+      currentStep += 1;
+    }, interval);
+
+    // Clean up the timer when the component unmounts
+    return () => {
+      clearInterval(timer);
+    };
+  }, [props.loadingTime]); // Dependency on loadingTime to handle changes
+
   useEffect(() => {
     // Disable scroll and touch events when the component mounts
     const disableScrollAndTouch = () => {
       document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
     };
 
     // Enable scroll and touch events when the component unmounts
     const enableScrollAndTouch = () => {
       document.body.style.overflow = 'auto';
-      document.body.style.touchAction = 'auto';
     };
 
+    // Perform the initial setup when the component mounts
     disableScrollAndTouch();
 
+    // Clean up and revert changes when the component unmounts
     return () => {
       enableScrollAndTouch();
     };
@@ -25,47 +53,31 @@ function FullLoadScreen() {
 
   return (
     <>
-<div className="absolute top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-filter backdrop-blur-sm">
-  <div className="text-center relative"> {/* Added relative class */}
-    <img
-      className="h-40 w-15 rounded-full top-0 left-10"
-      src={image}
-      alt="loading gif"
-    />
-    <CircularProgress
-      size={200}
-      thickness={1}
-      sx={{
-        color: '#4D6DE3',
-        position: 'absolute',
-        top: '-12%',  // Center vertically
-        left: '-13%',
-        zIndex: 1,
-      }}
-    />
-  </div>
-
-
-      {/* <div className='flex flex-col items-center'>
-        <div>
+      {/* Overlay for full-screen loading */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-filter backdrop-blur-sm">
+        <div className="text-center relative">
+          {/* Loading image */}
           <img
-            className="h-44 w-15 rounded-full "
+            className="h-40 w-15 rounded-full top-0 left-10"
             src={image}
             alt="loading gif"
           />
+          {/* Circular progress bar */}
           <CircularProgress
-            size={100}
+            variant="determinate"
+            value={progress}
+            size={200}
+            thickness={1.25}
             sx={{
-              color: green[500],
+              color: '#4D6DE3',
               position: 'absolute',
-              top: -6,
-              left: -6,
+              top: '-12%', // Center vertically
+              left: '-13%',
               zIndex: 1,
             }}
           />
         </div>
-      </div> */}
-    </div>
+      </div>
     </>
   );
 }
