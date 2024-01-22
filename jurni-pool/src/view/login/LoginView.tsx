@@ -8,7 +8,7 @@ import axios from 'axios';
 import {GOOGLE_AUTH_CLIENT_ID, URL_SERVERAPI_USER_LOGIN, LOADTIMECALL_SERVERAPI_USER_LOGIN} from '../../util/config';
 import { useState } from 'react';
 import FullLoadScreen from '../../components/FullLoadScreen';
-import { Routes, Route, useNavigate, BrowserRouter} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 
 function LoginView() {
@@ -28,12 +28,12 @@ function LoginView() {
         // Handle the response as needed
 
         //set routing link
-        navigate('/app'); // Use the history object for navigation>
+        navigate('/user/app'); // Use the history object for navigation>
 
       })
       .catch(function (error) {
         console.log(error);
-      
+        navigate('/');
       })
       .finally(() => {
         setLoading(false); // Set loading to false on login error
@@ -41,7 +41,7 @@ function LoginView() {
       });
     } else {
       console.log('Credential not available');
-
+      navigate('/');
     }
   };
 
