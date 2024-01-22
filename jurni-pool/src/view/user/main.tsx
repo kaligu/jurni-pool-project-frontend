@@ -3,7 +3,7 @@
 function main() {
   return (
     <div>
-      <h1>You are logged in successfully</h1>
+      <h1 className="text-white">You are logged in successfully</h1>
     </div>
   )
 }
