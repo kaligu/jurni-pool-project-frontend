@@ -28,7 +28,7 @@ function LoginView() {
         // Handle the response as needed
 
         //set routing link
-        navigate('/user/app'); // Use the history object for navigation>
+        navigate('/user/app/Home'); // Use the history object for navigation>
 
       })
       .catch(function (error) {
