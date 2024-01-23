@@ -15,22 +15,30 @@ function NavigationBar(props: { clickedState: number; }) {
   const [isButtonFiveClicked, setIsButtonFiveClicked] = useState(false);
 
   useEffect(() => {
-    // Set isButtonTwoClicked to true initially
-    
-    if(props.clickedState == 1){
-        clearAllClickedCSS(); 
-    }else if(props.clickedState == 2){
-        setIsButtonTwoClicked(true);
-    }else if(props.clickedState == 3){
-        setIsButtonThreeClicked(true);
-    }else if(props.clickedState == 4){
-        setIsButtonFourClicked(true);
-    }else if(props.clickedState == 5){
-        setIsButtonFiveClicked(true);
-    }else{
+    // Set the clicked state based on the prop
+    switch (props.clickedState) {
+      case 1:
         clearAllClickedCSS();
+        break;
+      case 2:
+        clearAllClickedCSS();
+        setIsButtonTwoClicked(true);
+        break;
+      case 3:
+        clearAllClickedCSS();
+        setIsButtonThreeClicked(true);
+        break;
+      case 4:
+        clearAllClickedCSS();
+        setIsButtonFourClicked(true);
+        break;
+      case 5:
+        clearAllClickedCSS();
+        setIsButtonFiveClicked(true);
+        break;
+      default:
+        break;
     }
-
   }, []);
 
   function clearAllClickedCSS(){
@@ -102,35 +110,45 @@ function NavigationBar(props: { clickedState: number; }) {
        
          
         <div className='flex flex-row justify-between '>
+          
+          <div>
           <Link to={'/user/app/Home'}>
-          <div>
             <img src={MiniLogoIcon} className='ml-2 mt-2 w-11 h-11 rounded-full transition-transform transform active:scale-110 active:shadow-md' alt='profile_photo'/>
+            </Link>
           </div>
-          </Link>
-          <Link to={'/user/app/offerride'}>
+          
+          
           <div>
+          <Link to={'/user/app/offerride'}>
             <img src={OfferSeatIcon} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonTwoClicked ? 'border-b-4 border-white'  : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonTwoClicked(true);}}/>
+            </Link>
           </div>
-          </Link>
-          <Link to={'/user/app/history'}>
+          
+          
           <div>
+          <Link to={'/user/app/history'}>
             <img src={TripHistoryIcon} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonThreeClicked ? 'border-b-4 border-white' : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonThreeClicked(true);}}/>
+            </Link>
           </div>
-          </Link>
-          <Link to={'/user/app/searchride'}>
+          
+          
           <div>
+          <Link to={'/user/app/searchride'}>
             <img src={FindRideIcon} className={`mr-2 mt-3  w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonFourClicked ? 'border-b-4 border-white' : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonFourClicked(true);}}/>
+            </Link>
           </div>
-          </Link>
-          <Link to={'/user/app/account'}>
+          
+          
           <div>
+          <Link to={'/user/app/account'}>
             <img src={ProfileAvatarIcon} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonFiveClicked ? 'border-b-4 border-white' : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonFiveClicked(true);}}/>
+            </Link>
           </div>
-          </Link>
+          
         </div>
       </div>
 
