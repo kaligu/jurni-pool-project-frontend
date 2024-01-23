@@ -4,7 +4,7 @@ function Home() {
   return (
     <div>
       <NavigationBar clickedState={0}/>
-      <h1>home</h1>
+      <h1 className='text-white'>home</h1>
     </div>
   )
 }
