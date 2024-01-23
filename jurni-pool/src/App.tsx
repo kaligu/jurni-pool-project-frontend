@@ -8,6 +8,7 @@ import SearchRide from "../src/view/searchride/SearchRide";
 import Home from './view/Home/Home';
 
 function App() {
+  // localStorage.setItem('jur_ni_data_Profile_image','https://lh3.googleusercontent.com/a/ACg8ocLcshw8CRN4Mb8ak-MxkpjkRWUq4yV1HDzstsVhEc-nhJo=s96-c');
   return (
     <BrowserRouter>
       <Routes>

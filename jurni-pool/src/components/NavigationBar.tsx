@@ -4,10 +4,15 @@ import OfferSeatIcon from '../assets//navicon_seat.png';
 import TripHistoryIcon from '../assets/navicon_history.png';
 import MiniLogoIcon from '../assets/logo_mini_icon.png';
 import { useEffect, useState } from 'react';
-
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { LOADTIMECALL_SERVERAPI_GET_USER_IMAGE, URL_SERVERAPI_GET_USER_IMAGE } from '../util/config';
+import FullLoadScreen from './FullLoadScreen';
 
 function NavigationBar(props: { clickedState: number; }) {
+
+  const [profileImage, setProfileImage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [isButtonTwoClicked, setIsButtonTwoClicked] = useState(false);
   const [isButtonThreeClicked, setIsButtonThreeClicked] = useState(false);
@@ -15,6 +20,7 @@ function NavigationBar(props: { clickedState: number; }) {
   const [isButtonFiveClicked, setIsButtonFiveClicked] = useState(false);
 
   useEffect(() => {
+    //
     switch (props.clickedState) {
       case 1:
         clearAllClickedCSS();
@@ -37,8 +43,29 @@ function NavigationBar(props: { clickedState: number; }) {
         break;
       default:
         break;
+
     }
-  }, [props.clickedState]);
+
+
+    // Load images using Axios and update state
+    //  setLoading(true);
+    //  axios.get(URL_SERVERAPI_GET_USER_IMAGE, {
+    //   params: {
+    //     userID: '114097123141468148252',
+    //   },
+    // })
+    // .then(function (response) {
+    //   // Assuming the image URL is available in response.data.imageUrl
+    //   setProfileImage(response.data.data);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // })
+    // .finally(() => {
+    //   setLoading(false);
+    // });
+    
+  }, []);
 
   function clearAllClickedCSS(){
     setIsButtonTwoClicked(false);
@@ -52,7 +79,9 @@ function NavigationBar(props: { clickedState: number; }) {
   return (
     
     <>
-   
+    {/* loading component */}
+    {/* {loading && <FullLoadScreen loadingTime={LOADTIMECALL_SERVERAPI_GET_USER_IMAGE}/>} */}
+    
       <div className='sticky top-0 w-full h-16 bg-[#4D6DE3] hidden md:block z-50'>
         <div className='absolute'>
         <div>
@@ -90,14 +119,14 @@ function NavigationBar(props: { clickedState: number; }) {
           </Link>
           <Link to={'/user/app/searchride'}>
           <div className='flex flex-col justify-center items-center' onClick={() => {clearAllClickedCSS(); setIsButtonFourClicked(true);}}>
-            <img src={FindRideIcon} className='mr-16 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer' alt='profile_photo'
+            <img src={FindRideIcon} referrerPolicy="no-referrer" className='mr-16 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer' alt='profile_photo'
             />
             <p className={`text-white text-xs -ml-16 ${isButtonFourClicked ? 'border-b-2 border-white' : ''}`}>සෙවීමට</p>
           </div>
           </Link>
           <Link to={'/user/app/account'}>
           <div className='flex flex-col justify-center items-center' onClick={() => {clearAllClickedCSS(); setIsButtonFiveClicked(true); } }>
-            <img src={ProfileAvatarIcon} className='mr-6 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer' alt='profile_photo'
+            <img src={localStorage.getItem('jur_ni_data_Profile_image') || ''} referrerPolicy="no-referrer" className='mr-6 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer' alt='profile_photo'
             />
             <p className={`text-white text-xs -ml-7 ${isButtonFiveClicked ? 'border-b-2 border-white' : ''}`}>මාගේ ගිනුම</p>
           </div>
@@ -144,7 +173,7 @@ function NavigationBar(props: { clickedState: number; }) {
           
           <div>
           <Link to={'/user/app/account'}>
-            <img src={ProfileAvatarIcon} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonFiveClicked ? 'border-b-4 border-white' : ''}`} alt='profile_photo'
+            <img src={localStorage.getItem('jur_ni_data_Profile_image') || ''} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonFiveClicked ? 'border-b-4 border-white' : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonFiveClicked(true);}}/>
             </Link>
           </div>
