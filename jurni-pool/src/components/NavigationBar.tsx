@@ -15,7 +15,6 @@ function NavigationBar(props: { clickedState: number; }) {
   const [isButtonFiveClicked, setIsButtonFiveClicked] = useState(false);
 
   useEffect(() => {
-    // Set the clicked state based on the prop
     switch (props.clickedState) {
       case 1:
         clearAllClickedCSS();
@@ -39,7 +38,7 @@ function NavigationBar(props: { clickedState: number; }) {
       default:
         break;
     }
-  }, []);
+  }, [props.clickedState]);
 
   function clearAllClickedCSS(){
     setIsButtonTwoClicked(false);
