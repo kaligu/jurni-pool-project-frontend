@@ -107,13 +107,13 @@ function NavigationBar(props: { clickedState: number; }) {
             <img src={MiniLogoIcon} className='ml-2 mt-2 w-11 h-11 rounded-full transition-transform transform active:scale-110 active:shadow-md' alt='profile_photo'/>
           </div>
           </Link>
-          <Link to={'/user/app/history'}>
+          <Link to={'/user/app/offerride'}>
           <div>
             <img src={OfferSeatIcon} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonTwoClicked ? 'border-b-4 border-white'  : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonTwoClicked(true);}}/>
           </div>
           </Link>
-          <Link to={'/user/app/offerride'}>
+          <Link to={'/user/app/history'}>
           <div>
             <img src={TripHistoryIcon} className={`mr-2 mt-3 w-9 h-9 rounded-full transition-transform transform active:scale-110 active:shadow-md ${isButtonThreeClicked ? 'border-b-4 border-white' : ''}`} alt='profile_photo'
             onClick={() => {clearAllClickedCSS(); setIsButtonThreeClicked(true);}}/>
