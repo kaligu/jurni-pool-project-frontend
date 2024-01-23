@@ -66,25 +66,26 @@ function NavigationBar(props: { clickedState: number; }) {
         
         </div>
         </div>
-
+        <Link to={'/user/app/Home'}>
         <div className='absolute ml-20 mt-1 flex flex-col'>
           <div><h1 className='text-3xl text-white font-bold'>Jur-ni</h1></div>
           <div><h1 className='text-sm text-blue-100'>ශ්‍රී ලංකාවේ ප්‍රමුකතම ගමන් සංචිතය</h1></div>
           </div>
-         
+          </Link>
         <div className='flex flex-row justify-end '>
-           <Link to={'/user/app/history'}>
-          <div className='flex flex-col justify-center items-center '
-          onClick={() => {clearAllClickedCSS(); setIsButtonTwoClicked(true);}}> 
-            <img src={TripHistoryIcon} className='mr-16 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer'  alt='profile_photo ' 
-            />
-            <p className={`text-white text-xs -ml-16 ${isButtonTwoClicked ? 'border-b-2 border-white' : ''}`}>ගමන්</p>
+           
+          <Link to={'/user/app/offerride'}>
+          <div className='flex flex-col justify-center items-center' onClick={() => {clearAllClickedCSS(); setIsButtonTwoClicked(true);}}>
+            <img src={OfferSeatIcon} className='mr-16 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer' alt='profile_photo'/>
+            <p className={`text-white text-xs -ml-16 ${isButtonTwoClicked ? 'border-b-2 border-white' : ''}`}>පලකිරීමට</p>
           </div>
           </Link>
-          <Link to={'/user/app/offerride'}>
-          <div className='flex flex-col justify-center items-center' onClick={() => {clearAllClickedCSS(); setIsButtonThreeClicked(true);}}>
-            <img src={OfferSeatIcon} className='mr-16 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer' alt='profile_photo'/>
-            <p className={`text-white text-xs -ml-16 ${isButtonThreeClicked ? 'border-b-2 border-white' : ''}`}>පලකිරීමට</p>
+          <Link to={'/user/app/history'}>
+          <div className='flex flex-col justify-center items-center '
+          onClick={() => {clearAllClickedCSS(); setIsButtonThreeClicked(true);}}> 
+            <img src={TripHistoryIcon} className='mr-16 mt-2 w-8 h-8 rounded-full transition-transform transform active:scale-120 active:shadow-2xl hover:scale-110 hover:shadow-xl cursor-pointer'  alt='profile_photo ' 
+            />
+            <p className={`text-white text-xs -ml-16 ${isButtonThreeClicked ? 'border-b-2 border-white' : ''}`}>ගමන්</p>
           </div>
           </Link>
           <Link to={'/user/app/searchride'}>
