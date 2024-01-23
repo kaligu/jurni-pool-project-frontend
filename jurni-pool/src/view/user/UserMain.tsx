@@ -1,7 +1,7 @@
 import NavigationBar from "../../components/NavigationBar"
 
 
-function main() {
+function UserMain() {
   return (
     <>
     <NavigationBar/>
@@ -12,4 +12,4 @@ function main() {
   )
 }
 
-export default main
+export default UserMain
