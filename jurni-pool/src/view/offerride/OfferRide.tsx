@@ -1,10 +1,12 @@
+// import MapView from '../../components/MapView'
 import NavigationBar from '../../components/NavigationBar'
+import Map from '../../components/map/Map'
 
 function OfferRide() {
   return (
     <div>
       <NavigationBar clickedState={2}/>
-      <h1 className='text-white'>Offer Ride</h1>
+      <Map/>
     </div>
   )
 }

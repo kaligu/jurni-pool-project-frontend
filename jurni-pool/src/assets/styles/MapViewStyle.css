@@ -1,0 +1,12 @@
+.leaflet-container{
+}
+
+.leaflet-routing-container,
+.leaflet-routing-collapsible {
+  display: none !important;
+}
+
+body{
+  background-color: #e0f2ff;
+}
+

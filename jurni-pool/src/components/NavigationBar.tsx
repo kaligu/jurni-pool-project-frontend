@@ -1,18 +1,18 @@
-import ProfileAvatarIcon from '../assets/test_avatar.jpg';
+// import ProfileAvatarIcon from '../assets/test_avatar.jpg';
 import FindRideIcon from '../assets/navicon_find_ride.png';
 import OfferSeatIcon from '../assets//navicon_seat.png';
 import TripHistoryIcon from '../assets/navicon_history.png';
 import MiniLogoIcon from '../assets/logo_mini_icon.png';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { LOADTIMECALL_SERVERAPI_GET_USER_IMAGE, URL_SERVERAPI_GET_USER_IMAGE } from '../util/config';
-import FullLoadScreen from './FullLoadScreen';
+// import { LOADTIMECALL_SERVERAPI_GET_USER_IMAGE, URL_SERVERAPI_GET_USER_IMAGE } from '../util/config';
+// import FullLoadScreen from './FullLoadScreen';
 
 function NavigationBar(props: { clickedState: number; }) {
 
-  const [profileImage, setProfileImage] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [profileImage, setProfileImage] = useState('');
+  // const [loading, setLoading] = useState(false);
 
   const [isButtonTwoClicked, setIsButtonTwoClicked] = useState(false);
   const [isButtonThreeClicked, setIsButtonThreeClicked] = useState(false);
