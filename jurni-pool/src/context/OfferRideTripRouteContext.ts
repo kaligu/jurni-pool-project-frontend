@@ -1,6 +1,12 @@
 import { createContext } from "react";
 
+// Trip array
+const OfferRideTripRoutesArray = createContext<any>(undefined);
 
-const OfferRideTripContext = createContext<any>(undefined);
+// Trip length and time
+const OfferRideTripTotalDistance = createContext<any>(undefined);
 
-export default OfferRideTripContext;
+// Trip time
+const OfferRideTripTotalTime = createContext<any>(undefined);
+
+export { OfferRideTripRoutesArray, OfferRideTripTotalDistance, OfferRideTripTotalTime };

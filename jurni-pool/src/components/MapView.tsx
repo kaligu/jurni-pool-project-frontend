@@ -11,6 +11,7 @@ import { DivIcon,    LatLngExpression } from 'leaflet';
 import CurrentLocationIcon from '../assets/current_location.png';
 import RoutingMachine from './RoutingMachine';
 import FullLoadScreen from './FullLoadScreen';
+import { OfferRideTripRoutesArray, OfferRideTripTotalDistance, OfferRideTripTotalTime } from '../context/OfferRideTripRouteContext';
 
 interface Location {
   latitude: number;
@@ -27,7 +28,8 @@ function MapView() {
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [markers, setMarkers] = useState<Array<Location>>([]);
   const [tripRouteMarkers, setTripRouteMarkers] = useState<Array<TripRouteMarker>>([]);
-  // const [totalDistance, setTotalDistance] = useState<number>(0);
+  const [totalDistance, setTotalDistance] = useState<number>(0);
+  const [totalTime, setTotalTime] = useState<number>(0);
   const [refreshKey, setRefreshKey] = useState(0);
   const [errorFetchingLocation, setErrorFetchingLocation] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -59,7 +61,8 @@ function MapView() {
   let words = text.split(', ');
   console.log("Kilometers: ", words[0]);  // Output: Kilometers: ddd
   console.log("Time: ", words[1]);  // Output: Time: ff
-  alert("Kilometers: " + words[0] + " Time: " + words[1]);
+      setTotalDistance(parseFloat(words[0]));
+      setTotalTime(parseFloat(words[1]));
     }, 1000);
       
     } catch (error) {
@@ -141,6 +144,12 @@ function MapView() {
   
   return (
     <>
+    {/* Add Data Into Context */}
+    <OfferRideTripRoutesArray.Provider value={tripRouteMarkers}/>
+    <OfferRideTripTotalDistance.Provider value={totalDistance}/>
+    <OfferRideTripTotalTime.Provider value={totalTime}/>
+
+
     {/* loading component */}
     {loading && <FullLoadScreen loadingTime={3}/>}
 
