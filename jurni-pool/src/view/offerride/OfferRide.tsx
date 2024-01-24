@@ -3,25 +3,39 @@ import MapView from '../../components/MapView';
 import NavigationBar from '../../components/NavigationBar';
 import { useLocation } from 'react-router-dom';
 
+interface Location {
+  latitude: number;
+  longitude: number;
+}
+
 function OfferRide() {
 
-  const [userLocation, setUserLocation] = useState();
+  const [userLocation, setUserLocation] = useState<Location>();
+  const [userTotalTripDistance, setUserTotalTripDistance] = useState();
+  const [userTotalTripTime, setUserTotalTripTime] = useState();
+  const [userTotalTripDataAray, setUserTotalTripDataAray] = useState();
 
-  useEffect(() => {
-
-    // For example, you might want to trigger some action or update state
-    // based on the new tripTotalDistance value.
-  }, []);
-
-  function GetUserLocation(userloct:any){
-    setUserLocation(userloct);
-    console.log("+++++++++++++++++++++++++++++++++++++++++++",userloct)
+  const getUserLocation =(data:Location | null) =>{
+    setUserLocation(data);
+     console.log("/////////////////////////////////////////////////////////////////////////////////////////////"+data);
+    console.log("**" +userLocation?.longitude);
   }
+  // function GetUserTotalTripDistance(td:any){
+  //   setUserTotalTripDistance(td);
+  // }
+  // function GetUserTotalTripTime(tt:any){
+  //   setUserTotalTripTime(tt);
+  // }
+  // function GetUserTotalTripDataAray(da:any){
+  //   setUserTotalTripDataAray(da);
+  // }
 
   return (
     <div>
       <NavigationBar clickedState={2} />
-      <MapView GetUserLocation={GetUserLocation} />
+      <MapView 
+        getUserLocation={getUserLocation}
+      />
     </div>
   );
 }

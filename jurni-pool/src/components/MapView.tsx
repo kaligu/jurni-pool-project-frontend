@@ -22,9 +22,12 @@ interface TripRouteMarker {
   longitude: number;
   address: string;
 }
+interface PropsTypes {
+  getUserLocation: (data: Location| undefined) => void;
+}
 
-function MapView({GetUserLocation}:any) {
-  const [userLocation, setUserLocation] = useState<Location | null>(null);
+function MapView(props:PropsTypes) {
+  const [userLocation, setUserLocation] = useState<Location>();
   const [markers, setMarkers] = useState<Array<Location>>([]);
   const [tripRouteMarkers, setTripRouteMarkers] = useState<Array<TripRouteMarker>>([]);
   const [totalDistance, setTotalDistance] = useState<number>(0);
@@ -36,6 +39,7 @@ function MapView({GetUserLocation}:any) {
   const getLocation = (latitude: number, longitude: number) => {
     setUserLocation({ latitude, longitude });
     console.log('User Location:', { latitude, longitude });
+    props.getUserLocation({ latitude, longitude });
   };
 
   const handleMapClick = async (event: any) => {
@@ -62,6 +66,9 @@ function MapView({GetUserLocation}:any) {
   console.log("Time: ", words[1]);  // Output: Time: ff
       setTotalDistance(parseFloat(words[0]));
       setTotalTime(parseFloat(words[1]));
+      // GetUserTotalTripDistance(totalDistance);
+      // GetUserTotalTripTime(totalTime);
+      // GetUserTotalTripDataAray(ma);
     }, 1000);
       
     } catch (error) {
@@ -74,7 +81,6 @@ function MapView({GetUserLocation}:any) {
     console.log('All Trip Route Markers:', tripRouteMarkers);
     setRefreshKey((prevKey) => prevKey + 1);
     // Log details from Leaflet Routing Machine
-    
     
   }, [tripRouteMarkers]);
 
@@ -106,7 +112,7 @@ function MapView({GetUserLocation}:any) {
       console.error('An error occurred:', error);
     } finally {
       setLoading(false);
-      GetUserLocation(userLocation);
+      
     }
   };
   
