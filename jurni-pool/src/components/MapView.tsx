@@ -53,6 +53,14 @@ function MapView() {
       ]);
       // Update the numbering based on the length of tripRouteMarkers array
 
+      setTimeout(function() {
+        const routingDataElement = document.querySelector(".leaflet-routing-container .leaflet-routing-alternatives-container .leaflet-routing-alt h3");
+  let text = (routingDataElement?.textContent) || ',';
+  let words = text.split(', ');
+  console.log("Kilometers: ", words[0]);  // Output: Kilometers: ddd
+  console.log("Time: ", words[1]);  // Output: Time: ff
+  alert("Kilometers: " + words[0] + " Time: " + words[1]);
+    }, 1000);
       
     } catch (error) {
       console.error('Error fetching address:', error);
@@ -65,13 +73,7 @@ function MapView() {
     setRefreshKey((prevKey) => prevKey + 1);
     // Log details from Leaflet Routing Machine
     
-    setTimeout(function() {
-      const routingDataElement = document.querySelector(".leaflet-routing-container .leaflet-routing-alternatives-container .leaflet-routing-alt h3");
-      let text = (routingDataElement?.textContent)||',';
-      let words = text.split(', ');
-      console.log("Kilometers : ",words[0]);  // Output: ddd
-      console.log("time : ",words[1]); 
-  }, 1000);
+    
   }, [tripRouteMarkers]);
 
   const handleButtonClick = async () => {
