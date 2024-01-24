@@ -26,7 +26,10 @@ function LoginView() {
       .then(function (response) {
         console.log(response);
         // Handle the response as needed
+        const userProfileImage = response.data._data.picture;
 
+      // Store user profile image data in local storage
+      localStorage.setItem('jur_ni_data_Profile_image', userProfileImage);
         //set routing link
         navigate('/user/app/Home'); // Use the history object for navigation>
 

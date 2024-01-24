@@ -54,7 +54,7 @@ function FullLoadScreen(props: propsTypes) {
   return (
     <>
       {/* Overlay for full-screen loading */}
-      <div className="absolute w-screen h-full top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-filter backdrop-blur-sm">
+      <div className="fixed w-full h-full top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-filter backdrop-blur-sm">
         <div className="text-center relative">
           {/* Loading image */}
           <img
