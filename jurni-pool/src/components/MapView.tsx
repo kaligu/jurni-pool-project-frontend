@@ -27,7 +27,7 @@ function MapView() {
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [markers, setMarkers] = useState<Array<Location>>([]);
   const [tripRouteMarkers, setTripRouteMarkers] = useState<Array<TripRouteMarker>>([]);
-  const [totalDistance, setTotalDistance] = useState<number>(0);
+  // const [totalDistance, setTotalDistance] = useState<number>(0);
   const [refreshKey, setRefreshKey] = useState(0);
   const [errorFetchingLocation, setErrorFetchingLocation] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -193,7 +193,6 @@ function MapView() {
                       {/* You can add more styling or information as needed */}
                     </div>
                   )}
-
                   
                 </MapContainer>
               )}
@@ -202,7 +201,7 @@ function MapView() {
         </div>
       </div>
       <div className=' absolute z-50 mt-20 ml-1'>
-        <img src={CurrentLocationIcon} width={'45px'}/>
+        <img src={CurrentLocationIcon} width={'45px'} onClick={handleButtonClick}/>
       </div>
     </>
   );
