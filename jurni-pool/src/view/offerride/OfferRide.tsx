@@ -75,15 +75,23 @@ function OfferRide() {
 
 <div className='w-full h-64 absolute z-40 bottom-3   flex-col'>
 <div className='flex flex-row justify-center'>
-  <div><h1 className='font-semibold '>Add Routing Points clicking Map...</h1></div>
+  <div><h1 className='font-semibold text-sm md:text-base'>ඔබගේ ගමන් මාර්ගය මැප් එක මත සලකුණු කරන්න</h1></div>
 
   </div>  
   <div className='flex flex-row justify-center space-x-10'>
+  <div className='flex flex-row'>
+  
+<h1 className='mt-2 font-medium text-sm'>ඉදිරියට
+
+</h1>
+<img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-left-2.png" alt="circled-left-2"/>
+</div>
   <div>
-  <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-left-2.png" alt="circled-left-2"/>
-  </div>
-  <div>
+    <div className='flex flex-row'>
   <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-right.png" alt="circled-right"/>
+<h1 className='mt-2 font-medium text-sm'>ඉදිරියට
+</h1>
+</div>
   </div>
   {/* <div> <h1 className='ml-5 text-lg font-extrabold font-sans'>Click on Map and Select you'r trip path...</h1></div> */}
   </div>
