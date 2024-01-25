@@ -82,7 +82,7 @@ function MapView(props:PropsTypes) {
 
   const handleButtonClick = async () => {
     try {
-      setLoading(true);
+      
   
       if (navigator.geolocation) {
         await new Promise<void>((resolve, reject) => {
@@ -107,16 +107,16 @@ function MapView(props:PropsTypes) {
     } catch (error) {
       console.error('An error occurred:', error);
     } finally {
-      setLoading(false);
+      
       
     }
   };
   
 
   useEffect(() => {
- 
+    setLoading(true);
     handleButtonClick();
-    
+    setLoading(false);
   }, []);
 
   const locationToLatLngExpression = (location: Location): LatLngExpression => ({
