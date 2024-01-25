@@ -24,21 +24,21 @@ interface TripRouteMarker {
 }
 interface PropsTypes {
   getUserLocation: (data: Location| undefined) => void;
+  getUserTotalTripDistance: (string:string) => void;
+  getUserTotalTripTime: (string:string) => void; 
+  getUserTotalTripDataMarker: (data: TripRouteMarker) => void;
 }
 
 function MapView(props:PropsTypes) {
   const [userLocation, setUserLocation] = useState<Location>();
   const [markers, setMarkers] = useState<Array<Location>>([]);
   const [tripRouteMarkers, setTripRouteMarkers] = useState<Array<TripRouteMarker>>([]);
-  const [totalDistance, setTotalDistance] = useState<number>(0);
-  const [totalTime, setTotalTime] = useState<number>(0);
   const [refreshKey, setRefreshKey] = useState(0);
   const [errorFetchingLocation, setErrorFetchingLocation] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const getLocation = (latitude: number, longitude: number) => {
     setUserLocation({ latitude, longitude });
-    console.log('User Location:', { latitude, longitude });
     props.getUserLocation({ latitude, longitude });
   };
 
@@ -56,20 +56,17 @@ function MapView(props:PropsTypes) {
         ...prevTripRouteMarkers,
         { latitude: lat, longitude: lng, address: addressName },
       ]);
-      // Update the numbering based on the length of tripRouteMarkers array
+      props.getUserTotalTripDataMarker({ latitude: lat, longitude: lng, address: addressName });
 
       setTimeout(function() {
         const routingDataElement = document.querySelector(".leaflet-routing-container .leaflet-routing-alternatives-container .leaflet-routing-alt h3");
   let text = (routingDataElement?.textContent) || ',';
   let words = text.split(', ');
-  console.log("Kilometers: ", words[0]);  // Output: Kilometers: ddd
-  console.log("Time: ", words[1]);  // Output: Time: ff
-      setTotalDistance(parseFloat(words[0]));
-      setTotalTime(parseFloat(words[1]));
-      // GetUserTotalTripDistance(totalDistance);
-      // GetUserTotalTripTime(totalTime);
-      // GetUserTotalTripDataAray(ma);
-    }, 1000);
+
+      props.getUserTotalTripDistance((words[0]));
+      props.getUserTotalTripTime((words[1]));
+      
+    }, 2000);
       
     } catch (error) {
       console.error('Error fetching address:', error);
@@ -77,8 +74,6 @@ function MapView(props:PropsTypes) {
   };
 
   useEffect(() => {
-    console.log('Size of array:', tripRouteMarkers.length);
-    console.log('All Trip Route Markers:', tripRouteMarkers);
     setRefreshKey((prevKey) => prevKey + 1);
     // Log details from Leaflet Routing Machine
     
@@ -165,7 +160,7 @@ function MapView(props:PropsTypes) {
                   center={userLocation ? locationToLatLngExpression(userLocation) : [0, 0]}
                   zoom={userLocation ? 15 : 2}
                   scrollWheelZoom={true}
-                  style={{ height: '90vh', width: '100vw', backgroundColor: '#4D6DE3' }}
+                  style={{ height: '235vh', width: '99vw', backgroundColor: '#4D6DE3' }}
                   zoomControl={true} // Disable zoom control
                 >
                   {/* Base Map Layer */}
