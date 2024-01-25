@@ -58,27 +58,22 @@ function OfferRide() {
          getUserTotalTripDataMarker={getUserTotalTripDataMarker}
        />
 
-<div className='w-full h-60 absolute z-40 bottom-3   flex-col'>
-<div className='flex flex-row justify-center'>
-  <div><h1 className='font-bold text-sm md:text-base'>ගමන් මාර්ගය</h1></div>
-
-  </div>  
-  <div className='flex flex-row justify-center space-x-10'>
-  <div>
-    <div className='flex flex-row'>
-  <img width="40" height="44"src="https://img.icons8.com/glyph-neue/64/checked.png" alt="checked"/>
-<h1 className='mt-3 font-semibold text-xs'>ඉදිරියට
-</h1>
-</div>
-  </div>
-  </div>
-  <div className='flex items-center justify-center bottom-1'>
-  
-  <div className='bg-[#F1FCFD] h-44 w-11/12 flex items-center justify-center border-[#4D6DE3] border-2 rounded-lg' >
+<div className='w-full h-64 absolute z-40 flex justify-center items-center bottom-3 '>
+  <div className='bg-[#F1FCFD] w-11/12 h-64 border-[#4D6DE3] border-2 rounded-md'>
+    <div className='flex flex-row justify-start ml-3'>
+      <div>
+        <h1 className='font-extrabold dtext-base text-[#4D6DE3] mt-1'>
+          ගමන් මාර්ගය
+        </h1>
+      </div>
+    </div>
+    
+    <div className='flex items-center justify-center bottom-1'>
+      <div className='bg-[#F1FCFD] h-44 w-11/12 flex items-center justify-center'>
 
 
 
-  <Card className="h-full w-full overflow-scroll" placeholder={undefined}>
+  <Card className="mt-3 h-full w-full overflow-scroll" placeholder={undefined}>
   <table className="w-full min-w-max table-auto text-left">
     <thead>
       <tr>
@@ -157,6 +152,18 @@ function OfferRide() {
 
   </div>
   </div>
+  <div className='mt-2 flex flex-row justify-end space-x-10'>
+  <div>
+    <div className='flex flex-row mr-2'>
+<h1 className='mt-3 font-semibold text-xs'>ඉදිරියට
+</h1>
+<img width="40" height="40"src="https://img.icons8.com/glyph-neue/64/checked.png" alt="checked"/>
+
+</div>
+  </div>
+  </div>
+  </div>
+
 </div>
 
 
@@ -169,25 +176,3 @@ function OfferRide() {
 export default OfferRide;
 
 
-{/* <div className='w-full h-60 absolute z-40 bottom-3   flex-col'>
-<div className='flex flex-row justify-center'>
-  <div><h1 className='font-bold text-sm md:text-base'>ඔබගේ ගමන් මාර්ගය මැප් එක මත සලකුණු කරන්න</h1></div>
-
-  </div>  
-  <div className='flex flex-row justify-center space-x-10'>
-  <div className='flex flex-row'>
-  
-<h1 className='mt-2 font-semibold text-xs'>ඉදිරියට
-
-</h1>
-<img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-left-2.png" alt="circled-left-2"/>
-</div>
-  <div>
-    <div className='flex flex-row'>
-  <img width="40" height="44" src="https://img.icons8.com/glyph-neue/64/circled-right.png" alt="circled-right"/>
-<h1 className='mt-2 font-semibold text-xs'>ඉදිරියට
-</h1>
-</div>
-  </div>
-  </div>
-  <div className='flex items-center justify-center bottom-1'></div> */}

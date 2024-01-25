@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import '../assets/styles/MapViewStyle.css';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import { DivIcon,    LatLngExpression } from 'leaflet';
 // import ProfileAvatarIcon from '../assets/test_avatar.jpg';
 import CurrentLocationIcon from '../assets/current_location.png';
@@ -112,12 +112,43 @@ function MapView(props:PropsTypes) {
       
     }
   };
+
+  const loadMap = async () => {
+    try {
+      setLoading(true);
+  
+      if (navigator.geolocation) {
+        await new Promise<void>((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              getLocation(latitude, longitude);
+              resolve();
+            },
+            (error) => {
+              console.error('Error getting user location:', error.message);
+              setErrorFetchingLocation(true);
+              alert('Please allow location access to use this feature.');
+              reject(error);
+            }
+          );
+        });
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+        setErrorFetchingLocation(true);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    } finally {
+      setLoading(false);
+      
+    }
+  };
   
 
   useEffect(() => {
-    setLoading(true);
-    handleButtonClick();
-    setLoading(false);
+    
+    loadMap();
   }, []);
 
   const locationToLatLngExpression = (location: Location): LatLngExpression => ({
@@ -151,7 +182,7 @@ function MapView(props:PropsTypes) {
     
 
     {/* loading component */}
-    {loading && <FullLoadScreen loadingTime={1}/>}
+    {loading && <FullLoadScreen loadingTime={2}/>}
 
       {/* <div className='absolute z-40 mt-20 ml-3' >
         <div className='w-[100%] h-fill flex flex-col border-2 bg-[#F1FCFD] rounded-lg'>
@@ -224,7 +255,7 @@ function MapView(props:PropsTypes) {
           </div>
         </div>
       </div>
-      <div className=' absolute z-30 mt-2 ml-1 bg-white border-[#4D6DE3] border-2 rounded-lg'>
+      <div className=' absolute z-30 mt-2 ml-1 bg-[#F1FCFD] rounded-lg'>
         <img src={CurrentLocationIcon} width={'40px'} onClick={handleButtonClick}/>
       </div>
     </>
