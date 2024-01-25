@@ -177,7 +177,7 @@ function MapView(props:PropsTypes) {
                   center={userLocation ? locationToLatLngExpression(userLocation) : [0, 0]}
                   zoom={userLocation ? 15 : 0}
                   scrollWheelZoom={true}
-                  style={{ height: '300px', width: '100vw', backgroundColor: '#4D6DE3' }}
+                  style={{ height: '90vh', width: '100vw', backgroundColor: '#4D6DE3' }}
                   zoomControl={true} // Disable zoom control
                 >
   <TileLayer

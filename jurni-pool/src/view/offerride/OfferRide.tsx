@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import MapView from '../../components/MapView';
 import NavigationBar from '../../components/NavigationBar'
-import UserFooter from '../footer/UserFooter';
 
 interface Location {
   latitude: number;
@@ -67,23 +66,35 @@ function OfferRide() {
 </div>
 </div> */}
 
-
-<div className='flex flex-col w-screen md:flex-row absolute z-50'>
-  <div className='md:w-8/12 md:h-full w-full h-full bg-[#F1FCFD]'>
-       <MapView
+<MapView
          getUserLocation={getUserLocation}
          getUserTotalTripDistance={getUserTotalTripDistance}
         getUserTotalTripTime={getUserTotalTripTime}
          getUserTotalTripDataMarker={getUserTotalTripDataMarker}
        />
-  </div>
-  <div className='md:w-4/12 md:h-full w-full h-96 bg-[#4D6DE3] flex items-center justify-center mt-72'>
-  <div className='bg-black w-11/12 h-5/6'></div>
-</div>
-<UserFooter/>
-   
 
+<div className='w-full h-64 absolute z-40 bottom-3   flex-col'>
+<div className='flex flex-row justify-center'>
+  <div><h1 className='font-semibold '>Add Routing Points clicking Map...</h1></div>
+
+  </div>  
+  <div className='flex flex-row justify-center space-x-10'>
+  <div>
+  <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-left-2.png" alt="circled-left-2"/>
+  </div>
+  <div>
+  <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-right.png" alt="circled-right"/>
+  </div>
+  {/* <div> <h1 className='ml-5 text-lg font-extrabold font-sans'>Click on Map and Select you'r trip path...</h1></div> */}
+  </div>
+  <div className='flex items-center justify-center bottom-1'>
+  
+  <div className='bg-[#F1FCFD] h-48 w-11/12 flex items-center justify-center border-[#4D6DE3] border-2 rounded-lg' >
+
+  </div>
+  </div>
 </div>
+
 
 
     </>
