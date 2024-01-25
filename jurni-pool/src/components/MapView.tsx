@@ -18,6 +18,7 @@ interface Location {
 }
 
 interface TripRouteMarker {
+  num:number;
   latitude: number;
   longitude: number;
   address: string;
@@ -55,9 +56,9 @@ function MapView(props:PropsTypes) {
       const addressName = data.display_name || 'Address not found';
       setTripRouteMarkers((prevTripRouteMarkers) => [
         ...prevTripRouteMarkers,
-        { latitude: lat, longitude: lng, address: addressName },
+        { latitude: lat, longitude: lng,num:0, address: addressName },
       ]);
-      props.getUserTotalTripDataMarker({ latitude: lat, longitude: lng, address: addressName });
+      props.getUserTotalTripDataMarker({ latitude: lat, longitude: lng,num:0, address: addressName });
 
       setTimeout(function() {
         const routingDataElement = document.querySelector(".leaflet-routing-container .leaflet-routing-alternatives-container .leaflet-routing-alt h3");
@@ -202,9 +203,9 @@ function MapView(props:PropsTypes) {
                       icon={stopIcon(index+1)}
                     >
                     
-                      <Popup>
+                      {/* <Popup> */}
                         {/* {tripRouteMarkers[index].address} */}
-                      </Popup>
+                      {/* </Popup> */}
                       </Marker>
                   ))}
                   <RoutingMachine key={refreshKey} array={tripRouteMarkers} />
