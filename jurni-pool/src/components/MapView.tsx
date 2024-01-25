@@ -178,7 +178,7 @@ function MapView(props:PropsTypes) {
                   zoom={userLocation ? 15 : 0}
                   scrollWheelZoom={true}
                   style={{ height: '90vh', width: '100vw', backgroundColor: '#4D6DE3' }}
-                  zoomControl={true} // Disable zoom control
+                  zoomControl={false} // Disable zoom control
                 >
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -223,8 +223,8 @@ function MapView(props:PropsTypes) {
           </div>
         </div>
       </div>
-      <div className=' absolute z-30 mt-20 ml-1'>
-        <img src={CurrentLocationIcon} width={'45px'} onClick={handleButtonClick}/>
+      <div className=' absolute z-30 mt-2 ml-1 bg-white border-[#4D6DE3] border-2 rounded-lg'>
+        <img src={CurrentLocationIcon} width={'40px'} onClick={handleButtonClick}/>
       </div>
     </>
   );

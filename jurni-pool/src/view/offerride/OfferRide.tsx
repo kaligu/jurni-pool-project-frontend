@@ -73,23 +73,23 @@ function OfferRide() {
          getUserTotalTripDataMarker={getUserTotalTripDataMarker}
        />
 
-<div className='w-full h-64 absolute z-40 bottom-3   flex-col'>
+<div className='w-full h-60 absolute z-40 bottom-3   flex-col'>
 <div className='flex flex-row justify-center'>
-  <div><h1 className='font-semibold text-sm md:text-base'>ඔබගේ ගමන් මාර්ගය මැප් එක මත සලකුණු කරන්න</h1></div>
+  <div><h1 className='font-bold text-sm md:text-base'>ඔබගේ ගමන් මාර්ගය මැප් එක මත සලකුණු කරන්න</h1></div>
 
   </div>  
   <div className='flex flex-row justify-center space-x-10'>
   <div className='flex flex-row'>
   
-<h1 className='mt-2 font-medium text-sm'>ඉදිරියට
+<h1 className='mt-2 font-semibold text-xs'>ඉදිරියට
 
 </h1>
 <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-left-2.png" alt="circled-left-2"/>
 </div>
   <div>
     <div className='flex flex-row'>
-  <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/circled-right.png" alt="circled-right"/>
-<h1 className='mt-2 font-medium text-sm'>ඉදිරියට
+  <img width="40" height="44" src="https://img.icons8.com/glyph-neue/64/circled-right.png" alt="circled-right"/>
+<h1 className='mt-2 font-semibold text-xs'>ඉදිරියට
 </h1>
 </div>
   </div>
@@ -97,7 +97,7 @@ function OfferRide() {
   </div>
   <div className='flex items-center justify-center bottom-1'>
   
-  <div className='bg-[#F1FCFD] h-48 w-11/12 flex items-center justify-center border-[#4D6DE3] border-2 rounded-lg' >
+  <div className='bg-[#F1FCFD] h-44 w-11/12 flex items-center justify-center border-[#4D6DE3] border-2 rounded-lg' >
 
   </div>
   </div>
