@@ -81,8 +81,8 @@ function NavigationBar(props: { clickedState: number; }) {
     <>
     {/* loading component */}
     {/* {loading && <FullLoadScreen loadingTime={LOADTIMECALL_SERVERAPI_GET_USER_IMAGE}/>} */}
-    
-      <div className='sticky top-0 w-full h-16 bg-[#4D6DE3] hidden md:block z-50'>
+    <div ></div>
+      <div className='relative top-0 w-screen h-16 bg-[#4D6DE3] hidden md:block z-40'>
         <div className='absolute'>
         <div>
         <Link to={'/user/app/Home'}>

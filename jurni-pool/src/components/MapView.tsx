@@ -43,6 +43,7 @@ function MapView(props:PropsTypes) {
   };
 
   const handleMapClick = async (event: any) => {
+    
     const { lat, lng } = event.latlng;
     const newMarker = { latitude: lat, longitude: lng };
     setMarkers((prevMarkers) => [...prevMarkers, newMarker]);
@@ -143,27 +144,42 @@ function MapView(props:PropsTypes) {
     iconSize: [60, 60],
   });
   
+  
   return (
     <>
     
 
     {/* loading component */}
-    {loading && <FullLoadScreen loadingTime={3}/>}
+    {loading && <FullLoadScreen loadingTime={1}/>}
 
-      <div className='flex flex-row'>
-        <div className='absolute -z-50'>
+      {/* <div className='absolute z-40 mt-20 ml-3' >
+        <div className='w-[100%] h-fill flex flex-col border-2 bg-[#F1FCFD] rounded-lg'>
           <div className=''>
             <div className='map'>
               {(userLocation || errorFetchingLocation) && (
                 <MapContainer
 
                   center={userLocation ? locationToLatLngExpression(userLocation) : [0, 0]}
-                  zoom={userLocation ? 15 : 2}
+                  zoom={userLocation ? 15 : 0}
                   scrollWheelZoom={true}
-                  style={{ height: '235vh', width: '99vw', backgroundColor: '#4D6DE3' }}
+                  style={{ height: '85vh', width: '65vw', backgroundColor: '#4D6DE3' }}
+                  zoomControl={true} // Disable zoom control
+                > */}
+                  {/* Base Map Layer */}
+
+                  <div className='absolute mt-0 z-30' >
+        <div className='w-[100%] h-fill flex flex-col '>
+          <div className=''>
+            <div className='map'>
+              {(userLocation || errorFetchingLocation) && (
+                <MapContainer
+
+                  center={userLocation ? locationToLatLngExpression(userLocation) : [0, 0]}
+                  zoom={userLocation ? 15 : 0}
+                  scrollWheelZoom={true}
+                  style={{ height: '300px', width: '100vw', backgroundColor: '#4D6DE3' }}
                   zoomControl={true} // Disable zoom control
                 >
-                  {/* Base Map Layer */}
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -176,7 +192,8 @@ function MapView(props:PropsTypes) {
   />
                   {userLocation && <Marker position={locationToLatLngExpression(userLocation)} icon={customIcon} />}
 
-                  <MapClickHandler onMapClick={handleMapClick} />
+                  <MapClickHandler  onMapClick={handleMapClick} />
+                  
 
                   {markers.map((marker, index) => (
                     <Marker
@@ -186,7 +203,7 @@ function MapView(props:PropsTypes) {
                     >
                     
                       <Popup>
-                        ddddddd
+                        {/* {tripRouteMarkers[index].address} */}
                       </Popup>
                       </Marker>
                   ))}
@@ -206,7 +223,7 @@ function MapView(props:PropsTypes) {
           </div>
         </div>
       </div>
-      <div className=' absolute z-50 mt-20 ml-1'>
+      <div className=' absolute z-30 mt-20 ml-1'>
         <img src={CurrentLocationIcon} width={'45px'} onClick={handleButtonClick}/>
       </div>
     </>

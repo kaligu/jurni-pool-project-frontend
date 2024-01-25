@@ -7,7 +7,7 @@
 }
 
 body{
-  background-color: #e0f2ff;
+  background-color: #4D6DE3;
 }
 
 .leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive.leaflet-marker-draggable {
@@ -19,3 +19,4 @@ body{
   margin-top: -60px !important;
   margin-left: -0px;
 }
+
