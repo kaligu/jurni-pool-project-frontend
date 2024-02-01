@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={'/'} element={<LoginView />} />
+        <Route path={'/'} element={<LoginView/>} />
 
         <Route path={'/user/app/Home'} element={<Home/>} />
         <Route path={'/user/app/account'} element={<Account/>} />

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import vedio from '../../assets/vedio_login.mp4';
-import { Typography } from "@material-tailwind/react";
 import logo from '../../assets/bigmain_logo.png';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
@@ -9,6 +8,17 @@ import {GOOGLE_AUTH_CLIENT_ID, URL_SERVERAPI_USER_LOGIN, LOADTIMECALL_SERVERAPI_
 import { useState } from 'react';
 import FullLoadScreen from '../../components/FullLoadScreen';
 import { useNavigate} from 'react-router-dom';
+import Footer from '../../components/Footer';
+
+import { Carousel } from "@material-tailwind/react";
+import image1 from '../../assets/cimage1.jpg';
+import image2 from '../../assets/cimage2.jpg';
+import image3 from '../../assets/cimage3.jpg';
+import image4 from '../../assets/cimage4.jpg';
+import image5 from '../../assets/cimage5.jpg';
+import image6 from '../../assets/cimage6.jpg';
+import image7 from '../../assets/cimage7.jpeg';
+import image8 from '../../assets/cimage8.jpeg';
 
 
 function LoginView() {
@@ -135,64 +145,58 @@ function LoginView() {
       {/* Other Content */}
 
 
-      <div className='bg-white h-screen w-full'></div>
+      <div className='bg-gray-800 h-screen w-full flex justify-center items-center flex-col'>
+      
+      <h1 className='text-white text-2xl' >"අපි දිනපතා කාර් මිලියනයක් මාර්ගවලින් ඉවත් කිරීමේ මෙහෙයුමක යෙදී සිටිමු"</h1>
+      <h1 className='text-white text-xl mt-3' >කාර්පූල්. බයික් පූල්. හිස් ආසන බෙදාගන්න. මුදල් ඉතිරිකිරීම. මිතුරන් ඇති කරගන්න. CO2 අඩු කරන්න</h1>
+      <Carousel placeholder='' transition={{ duration: 1 }} className="mt-5 rounded-xl w-5/6 h-2/3">
+      <img
+        src={image1}
+        alt="image 1"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image2}
+        alt="image 2"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image3}
+        alt="image 3"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image4}
+        alt="image 4"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image5}
+        alt="image 5"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image6}
+        alt="image 6"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image7}
+        alt="image 7"
+        className="h-full w-full object-cover"
+      />
+      <img
+        src={image8}
+        alt="image 8"
+        className="h-full w-full object-cover"
+      />
+  
+    </Carousel>
+
+      </div>
 
       {/* footer */}
-      <footer className="w-full bg-[#4D6DE3] p-8">
-      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-[#4D6DE3] text-center md:justify-between">
-        <img src="https://docs.material-tailwind.com/img/logo-ct-dark.png" alt="logo-ct" className="w-10" />
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
-          <li>
-            <Typography
-              as="a"
-              href="#"
-              placeholder=''
-              color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-            >
-              About Us
-            </Typography>
-          </li>
-          <li>
-            <Typography
-              as="a"
-              href="#"
-              color="blue-gray"
-              placeholder=''
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-            >
-              License
-            </Typography>
-          </li>
-          <li>
-            <Typography
-              as="a"
-              href="#"
-              color="blue-gray"
-              placeholder=''
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-            >
-              Contribute
-            </Typography>
-          </li>
-          <li>
-            <Typography
-              as="a"
-              href="#"
-              color="blue-gray"
-              placeholder=''
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-            >
-              Contact Us
-            </Typography>
-          </li>
-        </ul>
-      </div>
-      <hr className="my-8 border-blue-gray-50" />
-      <Typography placeholder='' color="blue-gray" className="text-center font-normal">
-        &copy; 2023 Material Tailwind
-      </Typography>
-    </footer>
+      <Footer/>
     </>
   )
 }

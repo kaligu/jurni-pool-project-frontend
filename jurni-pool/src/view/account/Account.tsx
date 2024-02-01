@@ -1,4 +1,4 @@
-import NavigationBar from '../../components/NavigationBar'
+import NavigationBar from '../../components/NavigationBar';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
@@ -11,7 +11,7 @@ const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
+  transform: 'translate(-50%, -50%)', 
   width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
@@ -19,12 +19,10 @@ const style = {
   p: 4,
 };
 
-
 function Account() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
 
   return (
     <div>
