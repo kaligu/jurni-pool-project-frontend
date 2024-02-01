@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Typography } from "@material-tailwind/react";
 import logo from '../../src/assets/logo_mini_icon.png';
 
